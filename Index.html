@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rajath Navas - Empowering Innovation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css">
+  <style>
+    :root {
+      --primary-color: #3b82f6;
+      --primary-hover: #2563eb;
+      --accent-color: #10b981;
+      --accent-secondary: #8b5cf6;
+      --bg-dark: #0f172a;
+      --bg-darker: #0a0f1d;
+      --bg-card: #1e293b;
+      --bg-card-hover: #334155;
+      --text-light: #f3f4f6;
+      --text-muted: #94a3b8;
+      --border-light: rgba(255, 255, 255, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-light);
+      line-height: 1.6;
+      background: var(--bg-dark);
+      overflow-x: hidden;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(10, 15, 29, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      padding: 5px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-light);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo span {
+      color: var(--accent-color);
+      position: relative;
+    }
+    
+    .logo span::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-color);
+      bottom: 5px;
+      right: -8px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 5px 0;
+    }
+
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-link:hover:after {
+      width: 100%;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      gap: 10px;
+    }
+    
+    .primary-button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .primary-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .primary-button:hover::before {
+      left: 100%;
+    }
+    
+    .primary-button:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+    }
+    
+    .secondary-button {
+      background-color: transparent;
+      color: var(--text-light);
+      border: 2px solid var(--primary-color);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .secondary-button::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background-color: var(--primary-color);
+      transition: all 0.3s ease;
+      z-index: -1;
+      opacity: 0.1;
+    }
+    
+    .secondary-button:hover::after {
+      height: 100%;
+    }
+    
+    .secondary-button:hover {
+      transform: translateY(-2px);
+    }
+    
+    /* Noise Texture */
+    .noise {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.015;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+      padding: 150px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 10%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+      z-index: 0;
+    }
+    
+    /* Tech Grid Animation */
+    .tech-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      opacity: 0.07;
+    }
+    
+    .grid-line {
+      position: absolute;
+      background: var(--border-light);
+    }
+    
+    .horizontal-line {
+      height: 1px;
+      width: 100%;
+    }
+    
+    .vertical-line {
+      width: 1px;
+      height: 100%;
+    }
+    
+    .data-pulse {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-color);
+      opacity: 0;
+      filter: blur(1px);
+      animation: data-pulse 8s infinite;
+    }
+    
+    @keyframes data-pulse {
+      0% { transform: scale(0); opacity: 0; }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.8; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+    
+    /* Hero Content */
+    .hero-content {
+      flex: 1;
+      padding-right: 40px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 50px;
+      padding: 8px 16px;
+      margin-bottom: 30px;
+      color: var(--accent-color);
+      font-weight: 600;
+      font-size: 0.9rem;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-badge::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(16, 185, 129, 0), rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0));
+      top: 0;
+      left: -100%;
+      animation: badge-shine 3s infinite;
+    }
+    
+    @keyframes badge-shine {
+      100% { left: 100%; }
+    }
+    
+    .hero-image-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-image {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 14px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .hero-image:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
+    }
+    
+    .image-glow {
+      position: absolute;
+      width: 90%;
+      height: 90%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+      z-index: 1;
+      bottom: -10px;
+      right: 0;
+      filter: blur(30px);
+    }
+    
+    .image-decoration {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border: 2px dashed var(--accent-color);
+      border-radius: 12px;
+      top: -20px;
+      left: -20px;
+      z-index: 1;
+      opacity: 0.7;
+    }
+    
+    .floating-tech {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background: var(--bg-card);
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-light);
+      color: var(--accent-color);
+      font-size: 24px;
+      animation: float 6s infinite ease-in-out;
+    }
+    
+    .tech-1 {
+      bottom: 15%;
+      left: -30px;
+      animation-delay: 0s;
+    }
+    
+    .tech-2 {
+      top: 20%;
+      right: -20px;
+      animation-delay: 1s;
+    }
+    
+    .tech-3 {
+      bottom: -30px;
+      right: 30%;
+      animation-delay: 2s;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      line-height: 1.1;
+      background: linear-gradient(90deg, var(--text-light) 0%, var(--primary-color) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+    }
+    
+    h1::before {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      left: 0;
+      bottom: -10px;
+      border-radius: 2px;
+    }
+    
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 600px;
+    }
+    
+    .name-highlight {
+      color: var(--accent-color);
+      font-weight: 600;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .name-highlight::after {
+      content: '';
+      position: absolute;
+      height: 8px;
+      width: 100%;
+      background: rgba(16, 185, 129, 0.2);
+      left: 0;
+      bottom: 2px;
+      z-index: -1;
+      border-radius: 4px;
+    }
+    
+    .cta-container {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 24px;
+    }
+    
+    .social-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--bg-card);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--text-muted);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-light);
+    }
+    
+    .social-icon:hover {
+      color: var(--primary-color);
+      transform: translateY(-5px);
+      background: var(--bg-card-hover);
+    }
+    
+    /* Section Styling */
+    .section {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .section-dark {
+      background-color: var(--bg-darker);
+    }
+
+    .section-pattern {
+      position: relative;
+    }
+
+    .section-pattern::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      );
+      background-size: 20px 20px;
+      z-index: 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-light);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      background: var(--primary-color);
+      left: 50%;
+      bottom: -10px;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      font-size: 1.5rem;
+      font-weight: 600;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .section-description {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* About Rajath Section */
+    .about-content {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-image-container {
+      flex: 1;
+      position: relative;
+    }
+
+    .about-image {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 14px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+    }
+    
+    .about-image:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
+    }
+    
+    .image-frame {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--accent-color);
+      border-radius: 14px;
+      top: 15px;
+      left: 15px;
+      z-index: -1;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-bio {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+    
+    .highlight-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    
+    .highlight-item {
+      background: var(--bg-card);
+      padding: 20px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .highlight-item:hover {
+      transform: translateY(-5px);
+      background: var(--bg-card-hover);
+      border-color: var(--accent-color);
+    }
+    
+    .highlight-icon {
+      font-size: 28px;
+      color: var(--accent-color);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(16, 185, 129, 0.1);
+      border-radius: 10px;
+    }
+    
+    .highlight-text {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+    
+    .highlight-subtext {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    /* About Pace Lab Section */
+    .pace-lab-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pace-lab-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .pace-lab-description {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto 60px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border-radius: 14px;
+      padding: 30px;
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary-color);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover::before {
+      height: 100%;
+    }
+
+    .feature-icon {
+      font-size: 30px;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 12px;
+    }
+
+    .feature-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--text-light);
+    }
+
+    .feature-text {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 60px;
+    }
+
+    .tech-pill {
+      background: var(--bg-card);
+      color: var(--accent-secondary);
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .tech-pill:hover {
+      transform: translateY(-3px);
+      background: rgba(139, 92, 246, 0.1);
+      border-color: var(--accent-secondary);
+    }
+
+    .clients-section {
+      margin-top: 80px;
+      position: relative;
+    }
+
+    .clients-title {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .clients-title::before,
+    .clients-title::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      height: 1px;
+      width: 50px;
+      background: var(--text-muted);
+    }
+
+    .clients-title::before {
+      right: 100%;
+      margin-right: 20px;
+    }
+
+    .clients-title::after {
+      left: 100%;
+      margin-left: 20px;
+    }
+
+    .clients-logo-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 60px;
+    }
+
+    .client-logo {
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      height: 40px;
+      filter: grayscale(100%) brightness(200%);
+    }
+
+    .client-logo:hover {
+      opacity: 1;
+      filter: grayscale(0%) brightness(100%);
+      transform: scale(1.1);
+    }
+
+    /* Speaking & Mentorship Section */
+    .speaking-section {
+      position: relative;
+      z-index: 1;
+    }
+
+    .speaking-content {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 50px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-light);
+      margin-bottom: 80px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .speaking-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(139, 92, 246, 0.05), rgba(59, 130, 246, 0.05));
+      z-index: -1;
+    }
+
+    .speaking-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      background: rgba(139, 92, 246, 0.1);
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent-secondary);
+      margin-bottom: 20px;
+      gap: 8px;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .speaking-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: var(--text-light);
+    }
+
+    .speaking-description {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .speaking-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .speaking-highlight {
+      background: rgba(30, 41, 59, 0.5);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .speaking-highlight:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-secondary);
+    }
+
+    .speaking-highlight-icon {
+      font-size: 24px;
+      color: var(--accent-secondary);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(139, 92, 246, 0.1);
+      border-radius: 10px;
+    }
+
+    .speaking-highlight-text {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    /* Vision Section */
+    .vision-section {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .vision-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 20px;
+    }
+
+    .vision-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 30px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .vision-description {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto 50px;
+      line-height: 1.8;
+    }
+
+    .vision-cta {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    /* Footer Section */
+    footer {
+      background-color: var(--bg-darker);
+      padding: 100px 0 50px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+    
+    .footer-description {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      margin-top: 25px;
+    }
+    
+    .footer-social-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-card);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--text-muted);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-light);
+    }
+    
+    .footer-social-icon:hover {
+      color: var(--primary-color);
+      transform: translateY(-5px);
+      background: var(--bg-card-hover);
+    }
+    
+    .footer-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--primary-color);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-link {
+      margin-bottom: 12px;
+    }
+    
+    .footer-link a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .footer-link a:hover {
+      color: var(--primary-color);
+      transform: translateX(5px);
+    }
+    
+    .contact-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    
+    .contact-icon {
+      font-size: 16px;
+      color: var(--primary-color);
+    }
+    
+    .newsletter-form {
+      display: flex;
+      margin-top: 20px;
+    }
+    
+    .newsletter-input {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1px solid var(--border-light);
+      background: var(--bg-card);
+      color: var(--text-light);
+      border-radius: 8px 0 0 8px;
+      font-family: inherit;
+    }
+    
+    .newsletter-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+    
+    .newsletter-button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .newsletter-button:hover {
+      background-color: var(--primary-hover);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-light);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1100px) {
+      .hero {
+        flex-direction: column;
+        padding: 120px 0 80px;
+      }
+      
+      .hero-content {
+        padding-right: 0;
+        margin-bottom: 60px;
+        text-align: center;
+      }
+      
+      h1::before {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      h2 {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .cta-container {
+        justify-content: center;
+      }
+      
+      .social-icons {
+        justify-content: center;
+      }
+      
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .about-image-container {
+        margin-bottom: 60px;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .feature-cards {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: var(--bg-darker);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.5s ease;
+        z-index: 99;
+      }
+      
+      .nav-menu.active {
+        left: 0;
+      }
+      
+      .mobile-toggle {
+        display: block;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .section {
+        padding: 80px 0;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .speaking-content {
+        padding: 30px;
+      }
+      
+      .cta-container {
+        flex-direction: column;
+      }
+      
+      .highlight-strip {
+        flex-direction: column;
+      }
+      
+      .vision-cta {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Noise Texture -->
+  <div class="noise"></div>
+  
+  <!-- Header & Navigation -->
+  <header id="header">
+    <div class="container nav-container">
+      <a href="#" class="logo">Rajath<span>Navas</span></a>
+      <button class="mobile-toggle" id="mobile-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#pace-lab" class="nav-link">Pace Lab</a></li>
+        <li><a href="#speaking" class="nav-link">Speaking</a></li>
+        <li><a href="#vision" class="nav-link">Vision</a></li>
+        <li><a href="#contact" class="nav-link primary-button">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <!-- Tech Grid Animation -->
+    <div class="tech-grid">
+      <div class="grid-line horizontal-line" style="top: 20%;"></div>
+      <div class="grid-line horizontal-line" style="top: 40%;"></div>
+      <div class="grid-line horizontal-line" style="top: 60%;"></div>
+      <div class="grid-line horizontal-line" style="top: 80%;"></div>
+      <div class="grid-line vertical-line" style="left: 20%;"></div>
+      <div class="grid-line vertical-line" style="left: 40%;"></div>
+      <div class="grid-line vertical-line" style="left: 60%;"></div>
+      <div class="grid-line vertical-line" style="left: 80%;"></div>
+      <div class="data-pulse" style="top: 20%; left: 40%;"></div>
+      <div class="data-pulse" style="top: 60%; left: 20%;"></div>
+      <div class="data-pulse" style="top: 80%; left: 60%;"></div>
+      <div class="data-pulse" style="top: 30%; left: 80%;"></div>
+    </div>
+    
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-rocket"></i>
+          Visionary Leader & Educator
+        </div>
+        <h1>Hi, I'm Rajath Navas — Empowering a Generation Through Innovation.</h1>
+        <h2>Visionary CEO. Ed-Tech Pioneer. Mentor to thousands. I'm building bridges between knowledge and opportunity at scale.</h2>
+        <div class="cta-container">
+          <a href="#about" class="button primary-button">
+            <i class="fas fa-arrow-right"></i>
+            Explore My Work
+          </a>
+          <a href="#" class="button secondary-button">
+            <i class="fas fa-user-plus"></i>
+            Follow My Journey
+          </a>
+        </div>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="hero-image-container">
+        <div class="image-decoration"></div>
+        <img src="C:\Users\icon\Desktop\Rajath Navas\assets\IMG_7878.JPG" alt="Rajath Navas" class="hero-image" />
+        <div class="image-glow"></div>
+        <div class="floating-tech tech-1"><i class="fas fa-laptop-code"></i></div>
+        <div class="floating-tech tech-2"><i class="fas fa-brain"></i></div>
+        <div class="floating-tech tech-3"><i class="fas fa-graduation-cap"></i></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- About Rajath Section -->
+  <section class="section section-dark section-pattern" id="about">
+    <div class="container">
+      <div class="section-header">
+        <h3 class="section-subtitle">The Journey</h3>
+        <h2 class="section-title">From Engineer to Educator to Entrepreneur</h2>
+        <p class="section-description">Bridging technology and education to empower the next generation of innovators.</p>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-image-container">
+          <img src="C:\Users\icon\Desktop\Rajath Navas\assets\IMG_0426.JPG" alt="Rajath Navas" class="about-image" />
+          <div class="image-frame"></div>
+        </div>
+        
+        <div class="about-text">
+          <p class="about-bio">
+            Rajath Navas is the visionary Chief Executive Officer of <strong>Pace Lab</strong>, and a trailblazer in the space of skill development and training. With a BTech and MBA, his journey began with a simple question: <em>Why are so many engineering graduates unprepared for real-world challenges?</em>
+          </p>
+          <p class="about-bio">
+            That insight sparked a revolution. Under Rajath's leadership, Pace Lab has trained over <strong>30,000 students</strong> in just five years — reshaping how India approaches engineering education. From keynote speeches at <strong>IITs and ISRO</strong> to inspiring 10,000+ students directly, Rajath brings strategy, energy, and empathy to everything he touches.
+          </p>
+          <p class="about-bio">
+            He's also an active entrepreneur across <strong>tech and real estate</strong>, and was recognized by <strong>Times of India</strong> for his innovative startup concepts.
+          </p>
+          
+          <div class="highlight-strip">
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div>
+                <div class="highlight-text">30,000+ Students</div>
+                <div class="highlight-subtext">Empowered & Trained</div>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <i class="fas fa-microphone"></i>
+              </div>
+              <div>
+                <div class="highlight-text">Speaker at IITs & ISRO</div>
+                <div class="highlight-subtext">Inspiring Future Leaders</div>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <i class="fas fa-award"></i>
+              </div>
+              <div>
+                <div class="highlight-text">Recognized Innovator</div>
+                <div class="highlight-subtext">By Times of India</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Pace Lab Section -->
+  <section class="section" id="pace-lab">
+    <div class="container">
+      <div class="section-header">
+        <h3 class="section-subtitle">What He's Building</h3>
+        <h2 class="section-title">Pace Lab: Bridging Skills, Speed & Scale</h2>
+        <p class="section-description">Revolutionizing technical education through hands-on learning and industry-relevant training.</p>
+      </div>
+      
+      <div class="pace-lab-content">
+        <p class="pace-lab-description">
+          Founded by Rajath, <strong>Pace Lab</strong> began by developing hands-on experimental lab kits for engineering institutions. Today, it's one of <strong>India's leading ed-tech and internship platforms</strong>, specializing in cutting-edge technologies and future-focused skills.
+        </p>
+        
+        <div class="feature-cards">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3 class="feature-title">AI & Data Science</h3>
+            <p class="feature-text">Comprehensive training programs in Artificial Intelligence, Machine Learning, and Data Analytics that prepare students for the most in-demand tech roles.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="feature-title">Cybersecurity & Cloud</h3>
+            <p class="feature-text">Practical training in cybersecurity protocols, ethical hacking, and cloud computing solutions for the modern digital enterprise.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-microchip"></i>
+            </div>
+            <h3 class="feature-title">Robotics & IoT</h3>
+            <p class="feature-text">Hands-on experience building robotics systems and IoT solutions that solve real-world problems in industry and consumer applications.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3 class="feature-title">App & Image Processing</h3>
+            <p class="feature-text">Development of cutting-edge mobile applications and advanced image processing techniques for the next generation of digital solutions.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-vr-cardboard"></i>
+            </div>
+            <h3 class="feature-title">Metaverse & VR</h3>
+            <p class="feature-text">Exploring immersive technologies and building the foundations for next-generation experiences in the metaverse and virtual reality.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3 class="feature-title">Entrepreneurship</h3>
+            <p class="feature-text">Mentorship and guidance for aspiring entrepreneurs, helping them transform innovative ideas into successful business ventures.</p>
+          </div>
+        </div>
+        
+        <div class="tech-pills">
+          <div class="tech-pill">Blockchain Certifications</div>
+          <div class="tech-pill">30,000+ Students Trained</div>
+          <div class="tech-pill">Learning Management System</div>
+          <div class="tech-pill">Industry Partnerships</div>
+          <div class="tech-pill">Global Recruiters</div>
+          <div class="tech-pill">NEFT Recognition</div>
+        </div>
+        
+        <div class="clients-section">
+          <h4 class="clients-title">Trusted By</h4>
+          <div class="clients-logo-grid">
+            <img src="/api/placeholder/150/40" alt="Client 1" class="client-logo">
+            <img src="/api/placeholder/150/40" alt="Client 2" class="client-logo">
+            <img src="/api/placeholder/150/40" alt="Client 3" class="client-logo">
+            <img src="/api/placeholder/150/40" alt="Client 4" class="client-logo">
+            <img src="/api/placeholder/150/40" alt="Client 5" class="client-logo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Speaking & Mentorship Section -->
+  <section class="section section-dark" id="speaking">
+    <div class="container">
+      <div class="section-header">
+        <h3 class="section-subtitle">Speaking & Mentorship</h3>
+        <h2 class="section-title">Speaking Truth to Talent</h2>
+        <p class="section-description">Inspiring the next generation of technologists, creators, and innovators.</p>
+      </div>
+      
+      <div class="speaking-section">
+        <div class="speaking-content">
+          <div class="speaking-badge">
+            <i class="fas fa-microphone-alt"></i>
+            Thought Leader
+          </div>
+          <h3 class="speaking-title">A Voice for Innovation & Impact</h3>
+          <p class="speaking-description">
+            Rajath is a powerful voice on the future of technology, education, and entrepreneurship. He's been invited to speak at <strong>IIT Bombay, IIT Kanpur, and ISRO's IIST</strong>, inspiring the next generation of builders, dreamers, and change-makers.
+          </p>
+          <p class="speaking-description">
+            Whether in a keynote, mentorship circle, or strategy session, he brings sharp insight and relatable stories that stick.
+          </p>
+          
+          <div class="speaking-highlights">
+            <div class="speaking-highlight">
+              <div class="speaking-highlight-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div class="speaking-highlight-text">IIT & ISRO Speaker</div>
+            </div>
+            <div class="speaking-highlight">
+              <div class="speaking-highlight-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="speaking-highlight-text">10,000+ Students Mentored</div>
+            </div>
+            <div class="speaking-highlight">
+              <div class="speaking-highlight-icon">
+                <i class="fas fa-chalkboard-teacher"></i>
+              </div>
+              <div class="speaking-highlight-text">Workshop Facilitator</div>
+            </div>
+            <div class="speaking-highlight">
+              <div class="speaking-highlight-icon">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <div class="speaking-highlight-text">Strategy Consultant</div>
+            </div>
+          </div>
+          
+          <div style="text-align: center; margin-top: 40px;">
+            <a href="#contact" class="button primary-button">
+              <i class="fas fa-calendar-check"></i>
+              Invite Rajath to Speak
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Vision Section -->
+  <section class="section section-pattern" id="vision">
+    <div class="container">
+      <div class="vision-section">
+        <div class="vision-content">
+          <h2 class="vision-title">This Is Just the Beginning</h2>
+          <p class="vision-description">
+            Rajath isn't here to build trends — he's here to build legacy. His mission is clear: <strong>empower youth, scale innovation, and rewrite the playbook on education and work</strong>.
+          </p>
+          <p class="vision-description">
+            Every project, every initiative, every talk — it's all part of a larger purpose to uplift individuals and economies alike.
+          </p>
+          
+          <div class="vision-cta">
+            <a href="#contact" class="button primary-button">
+              <i class="fas fa-envelope"></i>
+              Connect With Rajath
+            </a>
+            <a href="#" class="button secondary-button">
+              <i class="fab fa-linkedin"></i>
+              Follow on LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer Section -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <div class="footer-logo">Rajath<span>Navas</span></div>
+          <p class="footer-description">
+            Visionary Leader | CEO of Pace Lab | Educator | Technologist
+          </p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="footer-social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="footer-social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="footer-social-icon"><i class="fab fa-facebook-f"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3 class="footer-title">Quick Links</h3>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li class="footer-link"><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
+            <li class="footer-link"><a href="#pace-lab"><i class="fas fa-chevron-right"></i> Pace Lab</a></li>
+            <li class="footer-link"><a href="#speaking"><i class="fas fa-chevron-right"></i> Speaking</a></li>
+            <li class="footer-link"><a href="#vision"><i class="fas fa-chevron-right"></i> Vision</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3 class="footer-title">Contact</h3>
+          <div class="contact-info">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>rajathnavas@gmail.com</div>
+          </div>
+          <div class="contact-info">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div>+91 98765 43210</div>
+          </div>
+          <div class="contact-info">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>Bangalore, India</div>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3 class="footer-title">Stay Updated</h3>
+          <p class="footer-description">
+            Subscribe to receive updates on Rajath's latest initiatives, speaking engagements, and insights.
+          </p>
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Your Email" required>
+            <button type="submit" class="newsletter-button">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Rajath Navas. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    // Navigation toggle for mobile
+    document.getElementById('mobile-toggle').addEventListener('click', function() {
+      document.getElementById('nav-menu').classList.toggle('active');
+    });
+    
+    // Scrolled header effect
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Generate grid lines for tech grid animation
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create data pulse elements randomly
+      const techGrid = document.querySelector('.tech-grid');
+      
+      for (let i = 0; i < 10; i++) {
+        const dataPulse = document.createElement('div');
+        dataPulse.classList.add('data-pulse');
+        dataPulse.style.top = `${Math.random() * 100}%`;
+        dataPulse.style.left = `${Math.random() * 100}%`;
+        dataPulse.style.animationDelay = `${Math.random() * 5}s`;
+        techGrid.appendChild(dataPulse);
+      }
+    });
+  </script>
+</body>
+</html>
